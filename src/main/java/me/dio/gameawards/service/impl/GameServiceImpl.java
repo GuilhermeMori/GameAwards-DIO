@@ -1,6 +1,7 @@
 package me.dio.gameawards.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,13 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public List<Game> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List <Game> games = repository.findAll();
+		return games;
 	}
 
 	@Override
 	public Game findById(Long id) {
-		// TODO Auto-generated method stub
+		Optional<Game> game = repository.findById(id);
 		return null;
 	}
 
