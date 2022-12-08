@@ -27,7 +27,7 @@ public class GameRestController {
 		return ResponseEntity.ok(games);
 	}
 	
-	@GetMapping("games/{id]")
+	@GetMapping("games/{id}")
 	public ResponseEntity<Game> findById(@PathVariable Long id){
 		Game game = businessLayer.findById(id);
 		return ResponseEntity.ok(game);
@@ -39,7 +39,7 @@ public class GameRestController {
 		return ResponseEntity.ok(game);
 	}
 	
-	@PutMapping("games")
+	@PutMapping("games/{id}")
 	public ResponseEntity<Game> update(@PathVariable Long id,@RequestBody Game game){
 		businessLayer.update(id,game);
 		return ResponseEntity.ok(game);
