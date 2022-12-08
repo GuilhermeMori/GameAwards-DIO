@@ -53,7 +53,7 @@ public class GameRestController extends BaseRestController{
 		return ResponseEntity.ok().build();
 	}
 	
-	@PatchMapping("games")
+	@PatchMapping("games/{id}/votes")
 	public ResponseEntity<Game> update(@PathVariable Long id){
 		businessLayer.vote(id);
 		return ResponseEntity.ok().build();
