@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class Game {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long id;
 	private String name;
 	@Column(length = 500 )
