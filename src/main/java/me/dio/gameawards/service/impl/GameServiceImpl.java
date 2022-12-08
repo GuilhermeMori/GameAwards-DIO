@@ -1,6 +1,7 @@
 package me.dio.gameawards.service.impl;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import me.dio.gameawards.domain.model.Game;
 import me.dio.gameawards.domain.model.GameRepository;
 import me.dio.gameawards.service.GameService;
+import me.dio.gameawards.service.exception.BusinessException;
 import me.dio.gameawards.service.exception.NoContentException;
 
 @Service
@@ -32,14 +34,20 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public void insert(Game game) {
-		// TODO Auto-generated method stub
-		
+		if (Objects.nonNull(game.getId())) {
+			throw new BusinessException("O Id é diferentes de Null na inclusão");
+		}
+		repository.save(game);	
 	}
 
 	@Override
 	public void update(Long id, Game game) {
-		// TODO Auto-generated method stub
-		
+		Game gameDb = findById(id);
+		if (gameDb.getId().equals(game.getId())){
+			repository.save(game);
+		} else {
+			throw new BusinessException("Os IDs para alteração são divergentes");
+		}
 	}
 
 	@Override
