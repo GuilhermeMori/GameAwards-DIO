@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import me.dio.gameawards.domain.model.Game;
 import me.dio.gameawards.domain.model.GameRepository;
 import me.dio.gameawards.service.GameService;
+import me.dio.gameawards.service.exception.NoContentException;
 
 @Service
 public class GameServiceImpl implements GameService{
@@ -26,7 +27,7 @@ public class GameServiceImpl implements GameService{
 	@Override
 	public Game findById(Long id) {
 		Optional<Game> game = repository.findById(id);
-		return null;
+		return game.orElseThrow(()-> new NoContentException());
 	}
 
 	@Override
