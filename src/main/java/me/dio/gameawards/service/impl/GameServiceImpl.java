@@ -52,8 +52,8 @@ public class GameServiceImpl implements GameService{
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		Game gameDb = findById(id);
+		repository.delete(gameDb);
 	}
 
 }
